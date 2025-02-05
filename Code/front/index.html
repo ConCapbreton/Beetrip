@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./index.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+    <title>Lets play tennis!</title>
+</head>
+<body>
+    <h1>Let's play tennis!</h1>
+    <p id="player-details">First enter the player details in the form below and click the submit button.</p>
+    <form action="" id="player-form">
+        <label for="one-name">Player 1 name:</label>
+        <input id="one-name" type="text" maxlength="15" placeholder="Enter a name up to 15 characters long" required>
+        <label for="one-level">Player 1 level:</label>
+        <input id="one-level" type="number" min="1" max="10" placeholder="Enter a number between 1 and 10 inclusive" required>
+        <label for="two-name">Player 2 name:</label>
+        <input id="two-name" type="text" maxlength="15" placeholder="Enter a name up to 15 characters long" required>
+        <label for="two-level">Player 2 level:</label>
+        <input id="two-level" type="number" min="1" max="10" placeholder="Enter a number between 1 and 10 inclusive" required>
+        <input type="submit">
+    </form>
+    <div id="game-messages"></div>
+    <button class="button-styles" id="play-btn" disabled="">Let's play tennis!</button>
+    <button class="button-styles" id="analysis-btn" disabled="">Click to get the score.</button>
+    <table id="scoreboard"></table>
+    <div id="points-list"></div>
+</body>
+</html>
