@@ -6,7 +6,8 @@ const matchRoutes = require('./routes/matchRoutes')
 const corsOptions = {
   origin: ['http://127.0.0.1:5500', 'https://letsplaytennis.netlify.app/'],
   methods: ['POST'],
-  allowedHeaders: ['Content-Type', 'Authorization'],  
+  allowedHeaders: ['Content-Type', 'Authorization'], 
+  credentials: true, 
 }
 
 app.use(cors(corsOptions))
