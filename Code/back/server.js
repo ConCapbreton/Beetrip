@@ -5,21 +5,12 @@ const matchRoutes = require('./routes/matchRoutes')
 
 app.use(express.json())
 
-
 app.use(cors({
-  origin: 'http://127.0.0.1:5500',
+  origin: ['http://127.0.0.1:5500', 'https://letsplaytennis.netlify.app/'],
   credentials: true,
 }))
-// app.use((_req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*")
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, PATCH, DELETE"
-//   );
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization")
-//   res.setHeader("Content-Type", "application/json")
-//   next()
-// })
+
+app.options('*', cors());
   
 app.use('/letsplaytennis', matchRoutes)
 
