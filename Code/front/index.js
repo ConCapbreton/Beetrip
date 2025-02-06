@@ -160,12 +160,15 @@ analysisBtn.addEventListener("click", async () => {
             let playerTwoGames = document.createElement("td")
 
             if (response.data[i].tiebreak) {
-                if (response.data[i].playerOneTiebreakPoint > response.data[i].playerTwoTiebreakPoint) {
+                if (response.data[i].playerOneTiebreakPoint > response.data[i].playerTwoTiebreakPoint && response.data[i].playerOneTiebreakPoint > 6) {
                     playerOneGames.innerText = 7
                     playerTwoGames.innerText = 6
-                } else {
+                } else if (response.data[i].playerTwoTiebreakPoint > response.data[i].playerOneTiebreakPoint && response.data[i].playerTwoTiebreakPoint > 6) {
                     playerOneGames.innerText = 6
                     playerTwoGames.innerText = 7
+                } else {
+                    playerOneGames.innerText = 6
+                    playerTwoGames.innerText = 6
                 }
             } else {
                 playerOneGames.innerText = response.data[i].playerOneGameCount
@@ -186,7 +189,7 @@ analysisBtn.addEventListener("click", async () => {
             let playerTwoCGPoints = document.createElement("td")
             
             let lastElement = response.data.length - 1
-            if (response.data[lastElement].playerOnePoint > 3 && response.data[lastElement].playerOnePoint > 3) {
+            if (response.data[lastElement].playerOnePoint > 3 && response.data[lastElement].playerTwoPoint > 3) {
                 if (response.data[lastElement].playerOnePoint > response.data[lastElement].playerTwoPoint) {
                     playerOneCGPoints.innerText = "AV"
                     playerTwoCGPoints.innerText = "-"
