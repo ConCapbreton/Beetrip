@@ -12,11 +12,11 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-app.options('*', cors(corsOptions))
-
 app.use(express.json())
   
 app.use('/letsplaytennis', matchRoutes)
+
+app.options('*', cors(corsOptions))
 
 app.listen(3000, () => {
     console.log("Server running on port 3000")
