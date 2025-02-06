@@ -186,7 +186,7 @@ analysisBtn.addEventListener("click", async () => {
             let playerTwoCGPoints = document.createElement("td")
             
             let lastElement = response.data.length - 1
-            if (response.data[lastElement].playerOnePoint > 5 && response.data[lastElement].playerOnePoint > 5) {
+            if (response.data[lastElement].playerOnePoint > 3 && response.data[lastElement].playerOnePoint > 3) {
                 if (response.data[lastElement].playerOnePoint > response.data[lastElement].playerTwoPoint) {
                     playerOneCGPoints.innerText = "AV"
                     playerTwoCGPoints.innerText = "-"
