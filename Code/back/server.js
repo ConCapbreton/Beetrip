@@ -6,7 +6,10 @@ const matchRoutes = require('./routes/matchRoutes')
 app.use(express.json())
 
 
-app.use(cors())
+app.use(cors({
+  origin: 'http://127.0.0.1:5500',
+  credentials: true,
+}))
 // app.use((_req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*")
 //   res.setHeader(
