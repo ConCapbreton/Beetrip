@@ -23,13 +23,13 @@ playerForm.addEventListener("submit", (event) => {
 
     if (
         playerOneName.length > 0 
-        && playerOneName.length < 15 
+        && playerOneName.length < 16 
         && playerOneLevel > 0 
-        && playerOneLevel <11 
+        && playerOneLevel < 11 
         && playerTwoName.length > 0 
-        && playerTwoName.length 
+        && playerTwoName.length < 16
         && playerTwoLevel > 0 
-        && playerTwoLevel <= 11
+        && playerTwoLevel < 11
         && playerOneName !== playerTwoName
     ) {
         const inputs = document.querySelectorAll("input")
@@ -88,7 +88,7 @@ playBtn.addEventListener("click", () => {
 analysisBtn.addEventListener("click", async () => {
     
     try {
-        const responseJson = await fetch("http://localhost:3000/letsplaytennis",
+        const responseJson = await fetch("https://letsplaytennis.onrender.com/letsplaytennis",
             {   
                 method: "POST",
                 body: JSON.stringify({
@@ -121,6 +121,7 @@ analysisBtn.addEventListener("click", async () => {
         //TABLEHEAD and empyty column header
         const tableHead = document.createElement("thead")
         scoreboard.appendChild(tableHead)
+
         const tableHeadRow = document.createElement("tr")
         tableHead.appendChild(tableHeadRow)
         const columnHeader = document.createElement("th")
@@ -130,9 +131,9 @@ analysisBtn.addEventListener("click", async () => {
         //TABLEBODY and playernames
         const tableBody = document.createElement("tbody")
         scoreboard.appendChild(tableBody)
+        
         const playerOneRow = document.createElement("tr")
         tableBody.appendChild(playerOneRow)
-        
         const playerOneRowName = document.createElement("th")
         playerOneRowName.scope = "row"
         playerOneRowName.innerText = playerOneName
@@ -186,17 +187,16 @@ analysisBtn.addEventListener("click", async () => {
             
             let lastElement = response.data.length - 1
             if (response.data[lastElement].playerOnePoint > 5 && response.data[lastElement].playerOnePoint > 5) {
-            if (response.data[lastElement].playerOnePoint > response.data[lastElement].playerTwoPoint) {
-                playerOneCGPoints.innerText = "AV"
-                playerTwoCGPoints.innerText = "-"
-            } else if (response.data[lastElement].playerOnePoint < response.data[lastElement].playerTwoPoint) {
-                playerOneCGPoints.innerText = "-"
-                playerTwoCGPoints.innerText = "AV"
-            } else {
-                playerOneCGPoints.innerText = "40"
-                playerTwoCGPoints.innerText = "40"
-            }
-                
+                if (response.data[lastElement].playerOnePoint > response.data[lastElement].playerTwoPoint) {
+                    playerOneCGPoints.innerText = "AV"
+                    playerTwoCGPoints.innerText = "-"
+                } else if (response.data[lastElement].playerOnePoint < response.data[lastElement].playerTwoPoint) {
+                    playerOneCGPoints.innerText = "-"
+                    playerTwoCGPoints.innerText = "AV"
+                } else {
+                    playerOneCGPoints.innerText = "40"
+                    playerTwoCGPoints.innerText = "40"
+                }
             } else if (response.data[lastElement].tiebreak) {
                 playerOneCGPoints.innerText = response.data[lastElement].playerOneTiebreakPoint
                 playerTwoCGPoints.innerText = response.data[lastElement].playerTwoTiebreakPoint

@@ -15,7 +15,7 @@ function analysePoints(pointsArray) {
 
   let tiebreak = false
 
-  let resultArray = []
+  const resultArray = []
 
   // RESET / CHECKER and RESULTS FUNCTIONS
   function reset() {
