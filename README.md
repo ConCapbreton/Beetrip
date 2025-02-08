@@ -51,7 +51,7 @@ Frontend:
 ### Technologies
 - For the frontend challenges I used vanilla html/css/javascript. 
 
-- For the backend I used node.js with express and cors as dependencies (and nodemon as a dev dependency).
+- For the backend I used node.js with express and cors as dependencies (and nodemon as a dev dependency). Using uptimerobot I created a ping service to keep the server warm. 
 
 - For the DB challenge I used Lucid Charts to create the ER Diagram
 

@@ -4,6 +4,7 @@ const pointsList = document.getElementById("points-list")
 const analysisBtn = document.getElementById("analysis-btn")
 const scoreboard = document.getElementById("scoreboard")
 const gameMessages = document.getElementById("game-messages")
+const formErrorMsg = document.getElementById("form-error-message")
 let playerOneName
 let playerTwoName
 let playerOneLevel
@@ -13,6 +14,7 @@ let count = 1
 
 playerForm.addEventListener("submit", (event) => {
     event.preventDefault()
+    formErrorMsg.innerHTML = ""
     playerOneName = document.getElementById("one-name").value
     let playerOneLevelString = document.getElementById("one-level").value
     playerOneLevel = Number(playerOneLevelString)
@@ -41,9 +43,10 @@ playerForm.addEventListener("submit", (event) => {
         playerDetails.innerText = "Player details:"
         playBtn.disabled = false
     } else {
+        
         const formError = document.createElement("p")
         formError.innerText = "Please ensure players names are no more than 15 characters long (and different from each other) and that player levels are between 1 and 10 inclusive"
-        playerForm.appendChild(formError)
+        formErrorMsg.appendChild(formError)
     }
 })
 
@@ -51,7 +54,7 @@ playBtn.addEventListener("click", () => {
     let playerOneWinner
     
     let abilityDifference
-    //Each additional point in player level equates to 5% more probability of winning a point (simultaneously 2.5% less for the weaker player and 2.55% more for the stronger player)
+    //Each additional point in player level equates to 5% more probability of winning a point (simultaneously 2.5% less for the weaker player and 2.5% more for the stronger player)
     if (playerOneLevel >= playerTwoLevel) {
         abilityDifference = (playerOneLevel - playerTwoLevel) * 2.5 
         playerOneWinner = 50 + abilityDifference
@@ -86,7 +89,11 @@ playBtn.addEventListener("click", () => {
 
 
 analysisBtn.addEventListener("click", async () => {
-    
+    scoreboard.innerHTML = ""
+    const loadingMsg = document.createElement("caption")
+    loadingMsg.innerText = "Please wait whilst we get your score..."
+    scoreboard.appendChild(loadingMsg)
+
     try {
         const responseJson = await fetch("https://letsplaytennis.onrender.com/letsplaytennis",
             {   
